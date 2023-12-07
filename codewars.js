@@ -170,3 +170,22 @@ function makeUpperCase(str) {
 }
 
 console.log(makeUpperCase("hello"));
+
+//
+// * Sum all numbers till the given one
+
+// 1. using a For loop
+function sumToFor(x) {
+  let sum = 0;
+  for (i = x; i > 0; i--) {
+    sum += i;
+  }
+  return sum;
+}
+
+// 2. using a recursion
+function sumToRec(x) {
+  if (x < 1) return;
+  if (x === 1) return x;
+  return x + sumToRec(x - 1);
+}
