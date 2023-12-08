@@ -189,3 +189,38 @@ function sumToRec(x) {
   if (x === 1) return x;
   return x + sumToRec(x - 1);
 }
+
+//
+// * Calculate Factorial
+
+/* 
+The factorial of a natural number is a number multiplied by "number minus one", then by ... 
+... "number minus two", and so on till 1. The factorial of n is denoted as n!
+We can write a definition of factorial like this:
+
+n! = n * (n - 1) * (n - 2) * ...*1
+
+Values of factorials for different n:
+
+1! = 1
+2! = 2 * 1 = 2
+3! = 3 * 2 * 1 = 6
+4! = 4 * 3 * 2 * 1 = 24
+5! = 5 * 4 * 3 * 2 * 1 = 120
+*/
+
+// 1. iterative method
+function factorialIterative(n) {
+  if (n === 1) return 1;
+  let result = 1;
+  for (let i = 1; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}
+
+// 2. recursive method
+function factorialRec(n) {
+  if (n === 1) return 1;
+  return n * factorialRec(n - 1);
+}
