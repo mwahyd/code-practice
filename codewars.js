@@ -224,3 +224,10 @@ function factorialRec(n) {
   if (n === 1) return 1;
   return n * factorialRec(n - 1);
 }
+
+// * Convert number to reversed array of digits
+
+function digitize(n) {
+  if (n <= 0) return [0];
+  return [...n.toString()].reverse().map((num) => Number(num));
+}
