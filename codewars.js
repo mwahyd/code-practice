@@ -231,3 +231,27 @@ function digitize(n) {
   if (n <= 0) return [0];
   return [...n.toString()].reverse().map((num) => Number(num));
 }
+
+// * Find Maximum and Minimum Values of a List
+
+function min(list) {
+  if (list.length === 1) return list[0];
+  let currentMin = list[0];
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] < currentMin) {
+      currentMin = list[i];
+    }
+  }
+  return currentMin;
+}
+
+function max(list) {
+  if (list.length === 1) return list[0];
+  let currentMax = list[0];
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] > currentMax) {
+      currentMax = list[i];
+    }
+  }
+  return currentMax;
+}
