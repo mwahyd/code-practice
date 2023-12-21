@@ -264,3 +264,27 @@ function findAverage(array) {
     array.reduce((total, currentVal) => total + currentVal, 0) / array.length
   );
 }
+
+// * Convert string to camel case
+
+function toCamelCase(str) {
+  if (str === "") return "";
+  const chunks = str.split(/[-_]+/);
+  if (chunks[0][0] === chunks[0][0].toUpperCase())
+    return generateCamelCase(chunks);
+  return generateCamelCase(chunks, true);
+}
+
+function generateCamelCase(array, notCapital) {
+  let newStr = "";
+  notCapital
+    ? (newStr = array[0][0] + array[0].slice(1))
+    : (newStr = array[0][0].toUpperCase() + array[0].slice(1));
+  array.slice(1).forEach((item) => {
+    newStr += item[0].toUpperCase() + item.slice(1);
+  });
+  return newStr;
+}
+
+toCamelCase("Helllo-my-friend_goes_to_school");
+toCamelCase("loosing_is-not_my-style");
