@@ -265,7 +265,7 @@ function findAverage(array) {
   );
 }
 
-// * Convert string to camel case
+// * Convert string to camel case (6 kyu)
 
 function toCamelCase(str) {
   if (str === "") return "";
@@ -288,3 +288,17 @@ function generateCamelCase(array, notCapital) {
 
 toCamelCase("Helllo-my-friend_goes_to_school");
 toCamelCase("loosing_is-not_my-style");
+
+// * Is a number prime? <6 kyu>
+
+/* 
+Define a function that takes an integer argument and returns a logical value true or false depending on if the integer is a prime.
+*/
+
+function isPrime(num) {
+  if (num <= 1) return false;
+  for (i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false; // num is divisible by i, so it's not prime
+  }
+  return true; // num is not divisible by any numbers from 2 to sqrt(num), so it's prime
+}
