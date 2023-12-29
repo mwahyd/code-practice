@@ -303,7 +303,7 @@ function isPrime(num) {
   return true; // num is not divisible by any numbers from 2 to sqrt(num), so it's prime
 }
 
-// * Two Sum <6 kyu>
+// * Two Sum <6 kyu> -- incomplete !!
 
 /* 
 Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two different items in the array that, when added together, give the target value. The indices of these items should then be returned in a tuple / list (depending on your language) like so: (index1, index2).
@@ -311,18 +311,34 @@ Write a function that takes an array of numbers (integers for the tests) and a t
 
 function twoSum(numbers, target) {
   const pairs = [];
+  const indices = [];
 
   for (const num of numbers) {
     pairs.push([num, target - num]);
   }
-  console.log(pairs);
+  // console.log(pairs);
 
   for (const pair of pairs) {
     const num1 = pair[0];
     const num2 = pair[1];
 
-    if (num1 !== num2 && numbers.includes(num1) && numbers.includes(num2)) {
-      return [numbers.indexOf(num1), numbers.indexOf(num2)];
+    if (numbers.includes(num1) && numbers.includes(num2)) {
+      // return [numbers.indexOf(num1), numbers.indexOf(num2)];
+      indices.push(numbers.indexOf(num1), numbers.indexOf(num2));
+      break;
     }
   }
+  return indices;
 }
+
+// * Narcissistic number
+
+function narcissistic(value) {
+  let total = 0;
+  for (const digit of value.toString().split("")) {
+    total += digit ** value.toString().length;
+  }
+  return total === value;
+}
+
+narcissistic(153);
