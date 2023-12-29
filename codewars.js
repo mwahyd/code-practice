@@ -342,3 +342,19 @@ function narcissistic(value) {
 }
 
 narcissistic(153);
+
+// * Number of trailing zeros of N!
+
+/* 
+Write a program that will calculate the number of trailing zeros in a factorial of a given number.
+*/
+
+function zeros(n) {
+  if (n < 5) return 0;
+  let count = 0;
+  while (n >= 5) {
+    n = Math.floor(n / 5);
+    count += n;
+  }
+  return count;
+}
