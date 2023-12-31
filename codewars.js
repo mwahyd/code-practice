@@ -331,7 +331,7 @@ function twoSum(numbers, target) {
   return indices;
 }
 
-// * Narcissistic number
+// * Narcissistic number <6 kyu>
 
 function narcissistic(value) {
   let total = 0;
@@ -343,7 +343,7 @@ function narcissistic(value) {
 
 narcissistic(153);
 
-// * Number of trailing zeros of N!
+// * Number of trailing zeros of N! <5 kyu?
 
 /* 
 Write a program that will calculate the number of trailing zeros in a factorial of a given number.
@@ -353,8 +353,17 @@ function zeros(n) {
   if (n < 5) return 0;
   let count = 0;
   while (n >= 5) {
+    // eg: LOOP 1: n = 30 --> 30 / 5 --> n = 6 : count = 6 LOOP 2: n = 6 --> 6 / 5 --> n = 1 count = 7
     n = Math.floor(n / 5);
     count += n;
   }
   return count;
+}
+
+// * Transportation on vacation < 8 kyu>
+
+function rentalCarCost(d) {
+  if (d < 3) return d * 40;
+  d >= 7 ? (d = d * 40 - 50) : (d = d * 40 - 20);
+  return d;
 }
