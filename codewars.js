@@ -367,3 +367,48 @@ function rentalCarCost(d) {
   d >= 7 ? (d = d * 40 - 50) : (d = d * 40 - 20);
   return d;
 }
+
+// * The latest clock <6 kyu>
+
+/* 
+Write a function which receives 4 digits and returns the latest time of day that can be built with those digits.
+*/
+
+function latestClock(a, b, c, d) {
+  const digits = [a, b, c, d];
+  let maxTime = -1;
+
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
+      if (i === j) continue;
+
+      const hours = parseInt(digits[i].toString() + digits[j].toString());
+
+      if (hours >= 0 && hours <= 23) {
+        for (let k = 0; k < 4; k++) {
+          if (k === i || k === j) continue;
+
+          for (let l = 0; l < 4; l++) {
+            if (l === i || l === j || l === k) continue;
+
+            const minutes = parseInt(
+              digits[k].toString() + digits[l].toString()
+            );
+
+            if (minutes >= 0 && minutes <= 59) {
+              const currentTime = hours * 60 + minutes;
+              maxTime = Math.max(maxTime, currentTime);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  const maxHours = Math.floor(maxTime / 60);
+  const maxMinutes = maxTime % 60;
+
+  return `${maxHours.toString().padStart(2, "0")}:${maxMinutes
+    .toString()
+    .padStart(2, "0")}`;
+}
