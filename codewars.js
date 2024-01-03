@@ -386,7 +386,7 @@ function latestClock(a, b, c, d) {
 
       if (hours >= 0 && hours <= 23) {
         for (let k = 0; k < 4; k++) {
-          if (k === i || k === j) continue;
+          if (k === i && k === j) continue;
 
           for (let l = 0; l < 4; l++) {
             if (l === i || l === j || l === k) continue;
@@ -411,4 +411,11 @@ function latestClock(a, b, c, d) {
   return `${maxHours.toString().padStart(2, "0")}:${maxMinutes
     .toString()
     .padStart(2, "0")}`;
+}
+
+// * Is this a triangle? <7 kyu>
+
+function isTriangle(a, b, c) {
+  // Triangle Inequality Theorem, which states that the sum of two side lengths of a triangle is always greater than the third side.
+  return a + b > c && b + c > a && a + c > b;
 }
