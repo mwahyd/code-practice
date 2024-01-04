@@ -419,3 +419,9 @@ function isTriangle(a, b, c) {
   // Triangle Inequality Theorem, which states that the sum of two side lengths of a triangle is always greater than the third side.
   return a + b > c && b + c > a && a + c > b;
 }
+
+// * String ends with? <7 kyu>
+
+function solution(str, ending) {
+  return str.endsWith(ending);
+}
