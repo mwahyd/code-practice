@@ -425,3 +425,50 @@ function isTriangle(a, b, c) {
 function solution(str, ending) {
   return str.endsWith(ending);
 }
+
+// * Implementing binary search of a sorted array RECURSIVE
+
+// Suppose we want to know whether the number 67 is prime. If 67 is in the array, then it's prime.
+
+const primes = [
+  2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+  73, 79, 83, 89, 97,
+];
+
+function binarySearchArray(target, array, low, high) {
+  let min = low || 0;
+  let max = high || array.length - 1;
+  let mid = Math.floor((min + max) / 2);
+
+  // base case
+  if (min > max) return "Element not found";
+  if (array[mid] === target) return `The target ${target} is at index ${mid}`;
+
+  // recursive case
+  if (target > array[mid]) {
+    return binarySearchArray(target, array, mid + 1, max);
+  } else {
+    return binarySearchArray(target, array, min, mid - 1);
+  }
+}
+
+// * Implementing binary search of a sorted array ITERATIVE METHOD
+
+const doSearch = function (array, targetValue) {
+  let min = 0;
+  let max = array.length - 1;
+  let guess;
+
+  while (max >= min) {
+    guess = Math.floor((min + max) / 2);
+    if (array[guess] === targetValue) {
+      return guess;
+    } else if (array[guess] < targetValue) {
+      min = guess + 1;
+    } else {
+      max = guess - 1;
+    }
+  }
+
+  return -1;
+};
