@@ -426,6 +426,24 @@ function solution(str, ending) {
   return str.endsWith(ending);
 }
 
+// * multiples of 3 or 5 <6 kyu>
+/* 
+Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+*/
+
+function solution(number) {
+  // list all the numbers below the passed number
+  // determine if they are either a multiple of 3 or 5
+  // if number is negative return 0
+  // if the number is a multiple of both 3 & 5 only count it ONCE
+  if (number <= 0) return 0;
+  let total = 0;
+  for (let i = 1; i < number; i++) {
+    if (i % 5 === 0 || i % 3 === 0) total += i;
+  }
+  return total;
+}
+
 // * Implementing binary search of a sorted array RECURSIVE
 
 // Suppose we want to know whether the number 67 is prime. If 67 is in the array, then it's prime.
