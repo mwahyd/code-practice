@@ -444,6 +444,8 @@ function solution(number) {
   return total;
 }
 
+// Algorithms Course Khan Academy Challenges
+
 // * Implementing binary search of a sorted array RECURSIVE
 
 // Suppose we want to know whether the number 67 is prime. If 67 is in the array, then it's prime.
@@ -490,3 +492,65 @@ const doSearch = function (array, targetValue) {
 
   return -1;
 };
+
+// * Challenge: implement index swap, find minimum in subarray, implement SELECTION SORT
+
+const array = [18, 6, 66, 44, 9, 22, 14];
+
+function swap(array, firstIndex, secondIndex) {
+  const temp = array[firstIndex];
+  array[firstIndex] = array[secondIndex];
+  array[secondIndex] = temp;
+}
+
+function indexOfMinimum(array, startIndex) {
+  let minValue = array[startIndex];
+  let minIndex = startIndex;
+
+  for (let i = minIndex; i < array.length; i++) {
+    if (array[i] < minValue) {
+      minValue = array[i];
+      minIndex = i;
+    }
+  }
+  return minIndex;
+}
+
+function selectionSort(array) {
+  for (let i = 0; i < array.length; i++) {
+    const minIndex = indexOfMinimum(array, i);
+    swap(array, i, minIndex);
+  }
+  return array;
+}
+
+// function swap(array, firstIndex, secondIndex) {
+//   const temp = array[firstIndex];
+//   array[firstIndex] = array[secondIndex];
+//   array[secondIndex] = temp;
+// }
+
+// function indexOfMinimum(array, startIndex) {
+//   let minValue = array[startIndex];
+//   let minIndex = startIndex;
+
+//   for (let i = minIndex; i < array.length; i++) {
+//     if (array[i] < minValue) {
+//       minIndex = i;
+//       minValue = array[i];
+//     }
+//   }
+//   console.log(minValue, minIndex);
+//   return minIndex;
+// }
+
+// function selectionSort(array) {
+//   // loops over positions in the array
+//   // for each position, find the index of the minimum vaue in the subarray starting at that position
+//   // then swap the values at the position and at the minimum index
+//   for (let i = 0; i < array.length; i++) {
+//     const minIndex = indexOfMinimum(array, i);
+//     swap(array, i, minIndex);
+//   }
+//   return array;
+// }
