@@ -494,6 +494,7 @@ const doSearch = function (array, targetValue) {
 };
 
 // * Challenge: implement index swap, find minimum in subarray, implement SELECTION SORT
+// ^ https://www.khanacademy.org/computing/computer-science/algorithms/sorting-algorithms/a/analysis-of-selection-sort
 
 const array = [18, 6, 66, 44, 9, 22, 14];
 
@@ -524,33 +525,22 @@ function selectionSort(array) {
   return array;
 }
 
-// function swap(array, firstIndex, secondIndex) {
-//   const temp = array[firstIndex];
-//   array[firstIndex] = array[secondIndex];
-//   array[secondIndex] = temp;
-// }
+// * Challenege: implement insert
 
-// function indexOfMinimum(array, startIndex) {
-//   let minValue = array[startIndex];
-//   let minIndex = startIndex;
+const array3 = [22, 11, 99, 88, 9, 7, 42];
 
-//   for (let i = minIndex; i < array.length; i++) {
-//     if (array[i] < minValue) {
-//       minIndex = i;
-//       minValue = array[i];
-//     }
-//   }
-//   console.log(minValue, minIndex);
-//   return minIndex;
-// }
+// insert a vaue into a sorted subarray
+function insert(array, rightIndex, value) {
+  let i = rightIndex;
+  for (; i >= 0 && array[i] > value; i--) {
+    array[i + 1] = array[i];
+  }
+  array[i + 1] = value;
+}
 
-// function selectionSort(array) {
-//   // loops over positions in the array
-//   // for each position, find the index of the minimum vaue in the subarray starting at that position
-//   // then swap the values at the position and at the minimum index
-//   for (let i = 0; i < array.length; i++) {
-//     const minIndex = indexOfMinimum(array, i);
-//     swap(array, i, minIndex);
-//   }
-//   return array;
-// }
+function insertionSort(array) {
+  for (let i = 1; i < array.length; i++) {
+    insert(array, i - 1, array[i]);
+  }
+  console.log(array);
+}
