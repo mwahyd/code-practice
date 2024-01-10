@@ -444,7 +444,7 @@ function solution(number) {
   return total;
 }
 
-// Algorithms Course Khan Academy Challenges
+// ? Algorithms Course Khan Academy Challenges
 
 // * Implementing binary search of a sorted array RECURSIVE
 
@@ -543,4 +543,60 @@ function insertionSort(array) {
     insert(array, i - 1, array[i]);
   }
   console.log(array);
+}
+
+// ? Khan Academy Recursion Problems
+
+// * Iterative factorial
+
+function iterativeFactorial(n) {
+  let sum = 1;
+  for (let i = n; i > 0; i--) {
+    sum *= i;
+  }
+  return sum;
+}
+
+// * Challenge: Recursive factorial
+// ^ https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/properties-of-recursive-algorithms
+
+function factorial(n) {
+  // base case
+  if (n === 0) return 1;
+  // recursive case
+  return n * factorial(n - 1);
+}
+
+// * Challenge: Use recursion to determine whether a word is a palindrome
+
+function isPalindrome(string) {
+  // base case
+  if (string.length === 1 || string.length === 0) return true;
+
+  // recursive case
+  if (string[0] === string.at(-1))
+    // check if the other letter pairs are equal
+    return isPalindrome(string.slice(1, string.length - 1));
+  else return false;
+}
+
+// * Challenge: computing powers of a number
+
+function power(x, n) {
+  // base case
+  if (n === 0) return 1;
+
+  // recurisve case
+  // if n is odd
+  if (n > 0 && n % 2 !== 0) {
+    return power(x, n - 1) * x;
+    // if n is even
+  } else if (n > 0 && n % 2 === 0) {
+    const y = power(x, n / 2);
+    return y * y;
+    // if n is even
+  } else if (n < 0) {
+    const y = power(x, -n);
+    return 1 / y;
+  }
 }
