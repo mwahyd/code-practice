@@ -567,6 +567,28 @@ function factorial(n) {
   return n * factorial(n - 1);
 }
 
+// * Memoization of the recursive factorial function ------------------ [optimised]
+/* 
+this essentially stops the recursive calls sooner than the base case if n is found in the object
+*/
+
+const memo = {};
+function memoFactorial(n) {
+  // base case
+  if (n === 0) return 1;
+
+  // check memo
+  if (memo.hasOwnProperty(n)) {
+    return memo[n];
+  } else {
+    // recursive case
+    const value = n * memoFactorial(n - 1);
+    memo[n] = value;
+    return value;
+  }
+}
+console.log(memo);
+
 // * Challenge: Use recursion to determine whether a word is a palindrome
 
 function isPalindrome(string) {
@@ -599,4 +621,68 @@ function power(x, n) {
     const y = power(x, -n);
     return 1 / y;
   }
+}
+
+// * Iterative Fibonacci
+
+function iterativeFib(n) {
+  const nums = [0, 1];
+  if (n === 0 || n === 1) return nums[n];
+
+  for (let i = 0; i < n - 2; i++) {
+    const num1 = nums[i];
+    const num2 = nums[i + 1];
+    nums.push(num1 + num2);
+  }
+  console.log(nums);
+  return nums[n - 1];
+}
+
+// * recursive fibonacci
+
+function recFibonacci(n) {
+  // base case
+  if (n === 0 || n === 1) return n;
+
+  // recurisve case
+  return recFibonacci(n - 1) + recFibonacci(n - 2);
+}
+
+// * recursive fib returning a list
+
+function fibonacci(n) {
+  // base case
+  if (n <= 0) return [];
+  else if (n === 1) return [0];
+  else if (n === 2) return [0, 1];
+
+  // recursive case
+  const fiblist = fibonacci(n - 1);
+  fiblist.push(fiblist.at(-1) + fiblist.at(-2));
+  return fiblist;
+}
+
+// * memoised version of recursive fib ------------------ [optimised]
+/* 
+each time a new n is calculated, it is cached in memo2 object (hash table) therefore 
+it does not need to cycle down to the base case in each iteration
+*/
+
+const memo2 = {};
+function memoFib(n) {
+  // base case
+  if (n <= 0) return [];
+  else if (n === 1) return [0];
+  else if (n === 2) return [0, 1];
+
+  // check memo
+  if (memo2.hasOwnProperty(n)) {
+    return memo2[n];
+  }
+
+  // recursive case
+  const fiblist = fibonacci(n - 1);
+  fiblist.push(fiblist.at(-1) + fiblist.at(-2));
+  memo2[n] = fiblist;
+  return fiblist;
 }
