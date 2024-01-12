@@ -686,3 +686,42 @@ function memoFib(n) {
   memo2[n] = fiblist;
   return fiblist;
 }
+
+// * towers of Hanoi
+
+/* 
+solution INCOMPLETE: for some reason number 3 is not added to the final list disks = 5
+*/
+
+function towerOfHanoi(n, pegA, pegC, pegB) {
+  // base case
+  if (n === 1) {
+    pegB.push(pegA.pop());
+    return;
+  }
+
+  if (pegA.length === 0) populateA(n, pegA);
+  // recursive case
+  towerOfHanoi(n - 1, pegA, pegB, pegC);
+  pegB.push(pegA.pop());
+  towerOfHanoi(n - 1, pegC, pegA, pegB);
+}
+
+function populateA(n, array) {
+  for (let i = n; i > 0; i--) {
+    array.push(i);
+  }
+}
+
+function displayPegs() {
+  console.log("Peg A:", pegA);
+  console.log("Peg B:", pegB);
+  console.log("Peg C:", pegC);
+}
+
+const pegA = [];
+const pegB = [];
+const pegC = [];
+
+towerOfHanoi(5, pegA, pegC, pegB);
+displayPegs();
