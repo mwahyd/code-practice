@@ -525,7 +525,7 @@ function selectionSort(array) {
   return array;
 }
 
-// * Challenege: implement insert
+// * Challenege: implement insertion sort
 
 const array3 = [22, 11, 99, 88, 9, 7, 42];
 
@@ -544,6 +544,54 @@ function insertionSort(array) {
   }
   console.log(array);
 }
+
+// * Challenge: Implement merge sort
+
+function mergeSort(array) {
+  // base case
+  if (array.length <= 1) return array;
+
+  // recursive case
+  // find the mid point of the array
+  const midpoint = Math.floor((1 + array.length) / 2);
+
+  // split the array DIVIDE
+  const leftHalf = array.slice(0, midpoint);
+  const rightHalf = array.slice(midpoint);
+
+  // conquer the subproblem - get the individual array
+  const sortedLeft = mergeSort(leftHalf);
+  const sortedRight = mergeSort(rightHalf);
+
+  // merge
+  return merge(sortedLeft, sortedRight);
+}
+
+function merge(left, right) {
+  const sortedList = [];
+  let i = 0;
+  let j = 0;
+
+  // loop through both arrays until one of the lists is exhausted
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      sortedList.push(left[i]);
+      i++;
+    } else {
+      sortedList.push(right[j]);
+      j++;
+    }
+  }
+
+  // collect remaining elements from unpacked left array starting at i & unpacked right array starting at j
+  sortedList.push(...left.slice(i));
+  sortedList.push(...right.slice(j));
+
+  return sortedList;
+}
+
+const arr = [13, 10, 8, 1, 6, 4, 9, 7, 2];
+console.log(mergeSort(arr));
 
 // ? Khan Academy Recursion Problems
 
@@ -688,11 +736,6 @@ function memoFib(n) {
 }
 
 // * towers of Hanoi
-
-/* 
-solution INCOMPLETE: for some reason number 3 is not added to the final list disks = 5
-*/
-
 function towerOfHanoi(n, pegA, pegC, pegB) {
   // base case
   if (n === 1) {
