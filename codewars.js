@@ -593,6 +593,36 @@ function merge(left, right) {
 const arr = [13, 10, 8, 1, 6, 4, 9, 7, 2];
 console.log(mergeSort(arr));
 
+// * Challenge: Implement quicksort algorithm
+
+function quickSort(arr) {
+  // base case
+  if (arr.length <= 1) return arr;
+
+  // divide
+  //   const pivot = arr[arr.length - 1];
+  const pivot = arr[Math.floor(arr.length / 2)];
+  const left = [];
+  const right = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < pivot) left.push(arr[i]);
+    else if (arr[i] > pivot) right.push(arr[i]);
+  }
+
+  // recursive case (conquer)
+  console.log({ pivot });
+  console.log({ left });
+  console.log({ right });
+  return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+const list = [9, 7, 5, 11, 12, 2, 14, 3, 10, 6];
+const sorted = quickSort(list);
+
+console.log(list);
+console.log(sorted);
+
 // ? Khan Academy Recursion Problems
 
 // * Iterative factorial
