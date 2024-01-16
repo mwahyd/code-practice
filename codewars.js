@@ -555,7 +555,7 @@ function mergeSort(array) {
   // find the mid point of the array
   const midpoint = Math.floor((1 + array.length) / 2);
 
-  // split the array DIVIDE
+  // DIVIDE split the array
   const leftHalf = array.slice(0, midpoint);
   const rightHalf = array.slice(midpoint);
 
@@ -798,3 +798,24 @@ const pegC = [];
 
 towerOfHanoi(5, pegA, pegC, pegB);
 displayPegs();
+
+// * Challenge: Implement Breadth-first Search
+
+const adjList = [
+  [1],
+  [0, 4, 5],
+  [3, 4, 5],
+  [2, 6],
+  [1, 2],
+  [1, 2, 6],
+  [3, 5],
+  [],
+];
+
+function BFS(graph, source) {
+  const bfsInfo = [];
+
+  for (let i = 0; i < graph.length; i++) {
+    console.log(i);
+  }
+}
