@@ -801,6 +801,46 @@ displayPegs();
 
 // * Challenge: Implement Breadth-first Search
 
+function breadthFirstSearch(graph, source) {
+  const bfsInfo = initialiseArray(graph.length);
+  bfsInfo[source]["distance"] = 0;
+
+  const queue = new Queue();
+  queue.enqueue(source);
+
+  while (!queue.isEmpty()) {
+    const currentVertex = queue.dequeue();
+    processVertex(graph, bfsInfo, queue, currentVertex);
+  }
+  return bfsInfo;
+}
+
+function initialiseArray(graphLength) {
+  const bfsInfo = [];
+  for (let i = 0; i < graphLength; i++) {
+    bfsInfo[i] = { distance: null, predecessor: null };
+  }
+  return bfsInfo;
+}
+
+function processVertex(graph, bfsInfo, queue, currentVertex) {
+  for (let i = 0; i < graph[currentVertex].length; i++) {
+    const neighbor = graph[currentVertex][i];
+    if (shouldProcessNeighbor(bfsInfo, neighbor)) {
+      bfsInfo[neighbor]["distance"] = bfsInfo[currentVertex]["distance"] + 1;
+      bfsInfo[neighbor]["predecessor"] = currentVertex;
+      queue.enqueue(neighbor);
+    }
+  }
+}
+
+function shouldProcessNeighbor(bfsInfo, neighbor) {
+  return (
+    bfsInfo[neighbor]["distance"] === null &&
+    bfsInfo[neighbor]["predecessor"] === null
+  );
+}
+
 const adjList = [
   [1],
   [0, 4, 5],
@@ -812,10 +852,4 @@ const adjList = [
   [],
 ];
 
-function BFS(graph, source) {
-  const bfsInfo = [];
-
-  for (let i = 0; i < graph.length; i++) {
-    console.log(i);
-  }
-}
+console.log(breadthFirstSearch(adjList, 3));
