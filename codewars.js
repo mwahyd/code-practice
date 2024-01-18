@@ -800,8 +800,9 @@ towerOfHanoi(5, pegA, pegC, pegB);
 displayPegs();
 
 // * Challenge: Implement Breadth-first Search
+// www.khanacademy.org/computing/computer-science/algorithms/breadth-first-search/a/the-breadth-first-search-algorithm
 
-function breadthFirstSearch(graph, source) {
+https: function breadthFirstSearch(graph, source) {
   const bfsInfo = initialiseArray(graph.length);
   bfsInfo[source]["distance"] = 0;
 
@@ -823,6 +824,10 @@ function initialiseArray(graphLength) {
   return bfsInfo;
 }
 
+//  For each neighbor v of u that has not been visited:
+//     Set distance to 1 greater than u's distance
+//     Set predecessor to u
+//     Enqueue v
 function processVertex(graph, bfsInfo, queue, currentVertex) {
   for (let i = 0; i < graph[currentVertex].length; i++) {
     const neighbor = graph[currentVertex][i];
@@ -853,3 +858,13 @@ const adjList = [
 ];
 
 console.log(breadthFirstSearch(adjList, 3));
+
+// ? END OF Khan Academy Algorithms Challenges
+
+// * Extract the domain name from a URL <5 kyu>
+
+function domainName(url) {
+  const pattern = url.match(/^(?:https?:\/\/)?(?:www\.)?([^\/.]+)/);
+  if (pattern && pattern.length > 1) return pattern[1];
+  return null;
+}
