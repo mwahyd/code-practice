@@ -802,7 +802,7 @@ displayPegs();
 // * Challenge: Implement Breadth-first Search
 // www.khanacademy.org/computing/computer-science/algorithms/breadth-first-search/a/the-breadth-first-search-algorithm
 
-https: function breadthFirstSearch(graph, source) {
+function breadthFirstSearch(graph, source) {
   const bfsInfo = initialiseArray(graph.length);
   bfsInfo[source]["distance"] = 0;
 
@@ -867,4 +867,10 @@ function domainName(url) {
   const pattern = url.match(/^(?:https?:\/\/)?(?:www\.)?([^\/.]+)/);
   if (pattern && pattern.length > 1) return pattern[1];
   return null;
+}
+
+// * Check if a given string is alphanumeric ONLY <5 kyu>
+
+function isAlphanumeric(input) {
+  return /^[a-zA-Z0-9]+$/.test(input);
 }
