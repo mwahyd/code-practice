@@ -874,3 +874,11 @@ function domainName(url) {
 function isAlphanumeric(input) {
   return /^[a-zA-Z0-9]+$/.test(input);
 }
+
+// * Get the middle character <7 kyu>
+
+function getMiddle(string) {
+  const midIndex = (string.length - 1) / 2;
+  if (string.length % 2 === 0) return string.slice(midIndex, midIndex + 2);
+  return string[midIndex];
+}
