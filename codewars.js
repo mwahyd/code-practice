@@ -882,3 +882,10 @@ function getMiddle(string) {
   if (string.length % 2 === 0) return string.slice(midIndex, midIndex + 2);
   return string[midIndex];
 }
+
+// * Reversed sequence <8 kyu>
+
+function reverseSeq(n) {
+  const seq = Array.from(Array(n + 1).keys());
+  return seq.reverse().slice(0, seq.length - 1);
+}
