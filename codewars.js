@@ -889,3 +889,11 @@ function reverseSeq(n) {
   const seq = Array.from(Array(n + 1).keys());
   return seq.reverse().slice(0, seq.length - 1);
 }
+
+// * Count Bits < 6 kyu>
+/* 
+Write a function that takes an integer as input, and returns the number of bits that are equal to one in the binary representation of that number.
+*/
+function countBits(n) {
+  return n.toString(2).split("0").join("").length;
+}
