@@ -897,3 +897,7 @@ Write a function that takes an integer as input, and returns the number of bits 
 function countBits(n) {
   return n.toString(2).split("0").join("").length;
 }
+
+// * Dollars and cents <8 kyu>
+
+const formatMoney = (amount) => `$${amount.toFixed(2)}`;
